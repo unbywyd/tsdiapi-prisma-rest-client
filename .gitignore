@@ -6,6 +6,6 @@ node_modules
 #.env.production
 
 dist
-prisma/*
-src/prisma/*
+prisma
+src/prisma
 logs/*  
