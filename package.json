@@ -1,0 +1,53 @@
+{
+  "name": "@tsdiapi/prisma-rest-client",
+  "version": "1.0.0",
+  "description": "TypeScript client for Prisma REST API with full type safety and browser support. Works with @tsdiapi/prisma-rest plugin.",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "tsup && tsc",
+    "dev": "tsup --watch",
+    "prepare": "npm run build"
+  },
+  "keywords": [
+    "prisma",
+    "typescript",
+    "rest",
+    "api",
+    "client",
+    "browser",
+    "types",
+    "tsdiapi"
+  ],
+  "author": "unbywyd",
+  "license": "ISC",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/unbywyd/tsdiapi-prisma-rest-client"
+  },
+  "bugs": {
+    "url": "https://github.com/unbywyd/tsdiapi-prisma-rest-client/issues"
+  },
+  "homepage": "https://github.com/unbywyd/tsdiapi-prisma-rest-client",
+  "dependencies": {
+    "@prisma/client": "^6.6.0"
+  },
+  "devDependencies": {
+    "prisma": "^6.6.0",
+    "tsup": "^8.4.0",
+    "typescript": "^5.0.0"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ]
+}
