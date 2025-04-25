@@ -132,4 +132,4 @@ The repository includes an example HTML page for testing the client. Open [https
 
 ## License
 
-ISC
+MIT License (see [LICENSE](LICENSE))

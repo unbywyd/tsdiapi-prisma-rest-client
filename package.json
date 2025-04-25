@@ -27,7 +27,10 @@
     "tsdiapi"
   ],
   "author": "unbywyd",
-  "license": "ISC",
+  "publishConfig": {
+    "access": "public"
+  },
+  "license": "MIT",
   "type": "module",
   "repository": {
     "type": "git",
