@@ -24,8 +24,8 @@ export class PrismaRestClient<T> {
   public useClient(): {
     [M in PrismaModel<T>]: {
       [K in PrismaMethod<T, M>]: T[M][K] extends (...args: any[]) => Promise<infer R>
-        ? (payload: Parameters<T[M][K]>[0]) => Promise<R>
-        : never;
+      ? (payload: Parameters<T[M][K]>[0]) => Promise<R>
+      : never;
     };
   } {
     return new Proxy({} as any, {
@@ -33,16 +33,16 @@ export class PrismaRestClient<T> {
         if (typeof model !== 'string') {
           throw new Error('Only string models are supported');
         }
-        
+
         return new Proxy({} as any, {
           get: (_, method: string | symbol) => {
             if (typeof method !== 'string') {
               throw new Error('Only string methods are supported');
             }
-            
+
             return async (payload: unknown) => {
               const url = `${this.config.apiUrl}/${method}/${model}`;
-              
+
               try {
                 const response = await fetch(url, {
                   method: 'POST',
@@ -55,7 +55,17 @@ export class PrismaRestClient<T> {
 
                 if (!response.ok) {
                   const error = await response.json();
-                  throw new Error(error.message || 'API request failed');
+                  if (error?.error?.data?.error) {
+                    throw new Error(error.error.data.error);
+                  } else if (error?.data?.error) {
+                    throw new Error(error.data.error);
+                  } else {
+                    if (error?.message) {
+                      throw new Error(error.message);
+                    } else {
+                      throw new Error('API request failed');
+                    }
+                  }
                 }
 
                 return (await response.json())?.data;

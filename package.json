@@ -1,6 +1,6 @@
 {
   "name": "@tsdiapi/prisma-rest-client",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "TypeScript client for Prisma REST API with full type safety and browser support. Works with @tsdiapi/prisma-rest plugin.",
   "main": "dist/index.js",
   "module": "dist/index.js",
