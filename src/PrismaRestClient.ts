@@ -69,8 +69,18 @@ export class PrismaRestClient<T> {
                 }
 
                 return (await response.json())?.data;
-              } catch (error) {
-                throw error;
+              } catch (error: any) {
+                if (error?.error?.data?.error) {
+                  throw new Error(error.error.data.error);
+                } else if (error?.data?.error) {
+                  throw new Error(error.data.error);
+                } else {
+                  if (error?.message) {
+                    throw new Error(error.message);
+                  } else {
+                    throw new Error('API request failed');
+                  }
+                }
               }
             };
           },
